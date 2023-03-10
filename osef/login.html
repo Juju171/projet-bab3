@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <!-- ===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="style.css">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <!-- ===== Iconscout CSS ===== -->
+      <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  
+      <!-- ===== CSS ===== -->
+      <link rel="stylesheet" href="loginstyle.css">
+           
+      <!--<title>Login & Registration Form</title>-->
+  </head>
+    <!--<title>Login & Registration Form</title>-->
+  </head>
+
+  <html>
+    <body>
+      <div class="flex-parent jc-center">
+        <button onclick="document.getElementById('id01').style.display='block'" class="button">Login</button>
+      </div>
+    
+    <div id="id01" class="modal">
+      
+      <form class="modal-content animate" action="/action_page.php" method="post">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img src="147144.png" alt="Avatar" class="avatar">
+        </div>
+    
+        <div class="container">
+            <ion-icon name="mail-outline"></ion-icon>
+            <label class="font1" for="Email"><b>Email</b></label>
+            <input class="font1" type="email" id="email" placeholder="Enter Email" name="Email" required>
+
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <label class="font1" for="psw"><b>Password</b></label>
+            <input class="font1" type="password" id="password" placeholder="Enter Password" name="psw" required>
+        </div>
+        
+        <div class="flex-parent jc-center">
+          <button type="submit" class="login_button" onClick="auth(event)">Login</button>
+        </div>
+    
+        <label class="font1">
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+    
+        <!--
+          <div class="container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div> 
+      -->
+      </form>
+    </div>
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </body>
+    
+</html>
