@@ -105,5 +105,3 @@ if($_POST['surname'] and $_POST['firstname'] and $_POST['status'] and $_POST['ps
 
 }
 ?>
-
-//TEST
