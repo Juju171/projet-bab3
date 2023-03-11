@@ -1,8 +1,5 @@
 # Projet_bab3
 
-## Code Github :
-https://github.com/adafruit/Adafruit-Fingerprint-Sensor-Library
-
 ## Datasheets :
 ### SEN0348 fingerprint captor :
 https://www.gotronic.fr/art-capteur-d-empreinte-digitale-sen0348-32251.htm#complte_desc
