@@ -22,7 +22,7 @@ if (!isset($_SESSION['loggedin'])) {
     </head>
 
 
-    <body class="loggedin">
+  <body class="loggedin">
 		<nav class="navtop">
 			<div>
         <h1 class="font1">Projet BAB 3</h1>
