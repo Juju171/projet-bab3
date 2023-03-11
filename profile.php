@@ -43,8 +43,8 @@ $stmt->close();
 	<body class="loggedin">
 		<nav class="navtop">
 			<div>
-				<h1>Projet BAB 3</h1>
-				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
+				<h1 class="font1">Projet BAB 3</h1>
+				<a href="site.php"><i class="fa-solid fa-house"></i>Home</a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
