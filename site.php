@@ -53,7 +53,7 @@ $stmt->close();
       <body>
         <?php if($status=="boss") : ?> <!-- Case 1 : Si on est login en tant que patron-->
           <div class="flex-parent jc-center">
-            <a onclick="document.getElementById('id03').style.display='block'" class="my_button" type="submit"><i class="fa-solid fa-pen"></i> Modify a user</a>
+            <a onclick="document.getElementById('id03').style.display='block'" class="my_button" type="submit"><i class="fa-solid fa-pen"></i> Modifier un utilisateur</a>
             <a onclick="document.getElementById('id04').style.display='block'" class="my_button" type="submit" value="delete_user"><i class="fa-solid fa-trash"></i> Delete a user</a>
             <a class="my_button" type="submit" value="match_user"><i class="fa-solid fa-fingerprint"></i> Match test a fingerprint</a>
           </div>
