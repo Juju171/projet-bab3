@@ -1,0 +1,16 @@
+données
+Site -> ESP8266 :
+quand on enregistre un doigt, dire à quel ID on l'enregistre
+quand on supprime un compte, dire quel ID on supprime
+Dire quelle fonction on fait
+le nom de la personne quand on scanne le doigt (optionnel)
+
+ESP8266 -> Site :
+Dire quel est l'ID d'un doigt lorsqu'on le scanne
+
+Dans cet exemple, nous établissons une connexion à la base de données et récupérons les données nécessaires.
+Ensuite, nous envoyons ces données à l'ESP8266 en utilisant la fonction `echo`. 
+Les données sont envoyées sous la forme de chaînes de caractères séparées par des `&`. Le saut de ligne (`\n`) est facultatif, 
+mais peut être utile pour faciliter la lecture des données sur l'ESP8266.
+
+4. Sur l'ESP8266, analysez la réponse HTTP et récupérez les données envoyées. Voici un exemple de code :

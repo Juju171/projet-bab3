@@ -1,0 +1,33 @@
+Il faudrait un bouton physique qui communique avec l'ESP pour activer la détection ou alors elle tourne en permanence ?
+
+A faire :
+-brancher l'ESP8266 à une batterie pour ne pas avoir à le connecter par USB en permanence 
+-Ajouter un servomoteur qui permet d'ouvrir une porte
+-Dire qui ouvre une porte à l'écran
+-Faire la connexion entre le site et l'ESP8266
+
+les + si on a le temps :
+-Une led qui s'allume en vert si l'accés est octroyé et en rouge si ce n'est pas le cas
+-envoyer une notif au patron si une personne s'ajoute sur la base de donnée (pas vraiment utile)
+
+
+du coup pour :
+-un invité : un bouton ajouter une empreinte
+-un employé: un bouton tester empreinte digitale
+-un patron : un bouton supprimer une personne (et son empreinte), modifier le statut d'une personne (choix : invité, employé ou patron) (acceder aux profil des utilisateurs : https://openclassrooms.com/forum/sujet/php-acceder-aux-profils-des-utilisateurs )
+
+les données :
+ID
+surname
+firstname
+status
+psw
+
+
+https://codeshack.io/secure-login-system-php-mysql/
+https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php
+
+fini : 
+-site avec les boutons : register / login (login.php) -> nous envoie sur site.php si le compte est valide (voir code authenticate.php)
+
+-sur site.php, si on est un employé on peut ajouter une empreinte si elle est pas déjà enregistrée et si on est le patron on peut ajouter, supprimer et modifier le statut des autres

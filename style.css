@@ -1,0 +1,283 @@
+/* CSS */
+.my_button {
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  color: #ffffff; 
+  border-radius: 15px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 50%;
+  margin-top: 5%;
+  will-change: transform;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.my_button:disabled {
+  pointer-events: none;
+}
+
+.my_button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.my_button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+/* test 1 */
+input[type=text],input[type=number],input[type=text],input[list=statut], input[type=password],select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.font1 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Set a style for the login button */
+.login_button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border-radius: 15px;
+  border: none;
+  font-weight: bold;
+  text-transform:uppercase;
+  font-size: large;
+  cursor: pointer;
+  width: 15%;
+  font-family: 'Work Sans', sans-serif;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.flex-parent {
+  display: flex;
+}
+.jc-center {
+  justify-content: center;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: 15%;
+  padding: 10px 18px;
+  margin: 8px 0;
+  border-radius: 15px;
+  border: none;
+  font-weight: bold;
+  font-size: large;
+  cursor: pointer;
+  background-color: #f44336;
+  color: rgb(255, 255, 255);
+  font-family: 'Work Sans', sans-serif;
+}
+
+.resetbtn {
+  width: 15%;
+  padding: 10px 18px;
+  margin: 8px 0;
+  border-radius: 15px;
+  margin-left: 15px;
+  border: none;
+  font-weight: bold;
+  font-size: large;
+  cursor: pointer;
+  background-color: #2d2f31;
+  color: white;
+  font-family: 'Work Sans', sans-serif;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 25%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  font-family: 'Work Sans', sans-serif;
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+
+.navtop {
+	background-color: #2f3947;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+	height: 60px;
+	width: 100%;
+}
+.navtop div {
+	display: flex;
+	margin: 0 auto;
+	width: 1000px;
+	height: 100%;
+}
+.navtop div h1, .navtop div a {
+	display: inline-flex;
+	align-items: center;
+}
+.navtop div h1 {
+	flex: 1;
+	font-size: 24px;
+	padding: 0;
+	margin: 0;
+	color: #eaebed;
+	font-weight: normal;
+}
+.navtop div a {
+	padding: 0 20px;
+	text-decoration: none;
+	color: #c1c4c8;
+	font-weight: bold;
+}
+.navtop div a i {
+	padding: 2px 8px 0 0;
+}
+.navtop div a:hover {
+	color: #eaebed;
+}
+body.loggedin {
+	background-color: #f3f4f7;
+}
+body {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+ }
+ h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+ }
+.content {
+	width: 1000px;
+	margin: 0 auto;
+}
+.content h2 {
+	margin: 0;
+	padding: 25px 0;
+	font-size: 22px;
+	border-bottom: 1px solid #e0e0e3;
+	color: #4a536e;
+}
+.content > p, .content > div {
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+	margin: 25px 0;
+	padding: 25px;
+	background-color: #fff;
+}
+.content > p table td, .content > div table td {
+	padding: 5px;
+}
+.content > p table td:first-child, .content > div table td:first-child {
+	font-weight: bold;
+	color: #4a536e;
+	padding-right: 15px;
+}
+.content > div p {
+	padding: 5px;
+	margin: 0 0 10px 0;
+}
