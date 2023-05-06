@@ -55,7 +55,7 @@ $stmt->close();
           <div class="flex-parent jc-center">
             <a onclick="document.getElementById('id03').style.display='block'" class="my_button" type="submit"><i class="fa-solid fa-pen"></i> Modifier un utilisateur</a>
             <a onclick="document.getElementById('id04').style.display='block'" class="my_button" type="submit" value="delete_user"><i class="fa-solid fa-trash"></i> Supprimer un utilisateur</a>
-            <a class="my_button" type="submit" value="match_user"><i class="fa-solid fa-fingerprint"></i> Match test a fingerprint</a>
+            <a class="my_button" type="submit" value="match_user"><i class="fa-solid fa-fingerprint"></i> ghdfg test a fingerprint</a>
           </div>
 
     <div id="id03" class="modal"> <!-- 1. Modifier le statut d'un user -->
