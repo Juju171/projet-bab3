@@ -81,17 +81,17 @@ $stmt->close();
 
               // Affichage du formulaire
               echo "<form method='post'>";
-              echo "<label for='user' class='font1'><i class='fa-solid fa-user'></i><b> Surname : </b></label>";
+              echo "<label for='user' class='font1'><i class='fa-solid fa-user'></i><b> Nom : </b></label>";
               echo "<select id='user' name='user'>";
               while($row = $result->fetch_assoc()) {
                 echo "<option value='".$row["ID"]."'>".$row["surname"]."</option>";
               }
               echo "</select><br>";
-              echo "<label for='status' class='font1'><i class='fa-solid fa-briefcase'></i><b> Status : </b></label>";
+              echo "<label for='status' class='font1'><i class='fa-solid fa-briefcase'></i><b> Statut : </b></label>";
               echo "<select id='status' name='status'>";
-              echo "<option value='guest'>Guest</option>";
-              echo "<option value='employee'>Employee</option>";
-              echo "<option value='boss'>Boss</option>";
+              echo "<option value='guest'>Invité</option>";
+              echo "<option value='employee'>Employé</option>";
+              echo "<option value='boss'>Patron</option>";
               echo "</select><br>";
               echo "</form>";
 
@@ -156,7 +156,7 @@ $stmt->close();
 
           if (mysqli_num_rows($result) > 0) {
               echo "<form action='' method='POST'>";
-              echo "<label for='user' class='font1'><i class='fa-solid fa-user'></i><b> Surname : </b></label>";
+              echo "<label for='user' class='font1'><i class='fa-solid fa-user'></i><b> Nom : </b></label>";
               echo "<select name='user_id'>";
               while ($row = mysqli_fetch_assoc($result)) {
                   echo "<option value='" . $row['ID'] . "'>" . $row['surname'] . "</option>";
