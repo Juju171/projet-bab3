@@ -1,4 +1,5 @@
 <?php
+$ip = "192.168.1.40";
 require_once("config.php");
 // We don't have the password or surname info stored in sessions, so instead, we can get the results from the database.
 $stmt = $link->prepare('SELECT status FROM tableau WHERE ID = ?');
@@ -230,7 +231,7 @@ $stmt->close();
 
     <?php elseif ( $status == "employee" ) : ?> <!-- Case 3 : Si on est login en tant qu'employé--><!--Il faut ajouter à l'ID qu'on souhaite sur le capteur -->
       <div class="flex-parent jc-center">
-	      <a class="my_button" target="myIframe" type="submit" value="add_user"><i class="fa-solid fa-fingerprint"></i> Ajouter une empreinte </a>
+	      <a class="my_button" onclick="add_fingerprint1()" target="myIframe" type="submit" value="add_user"><i class="fa-solid fa-fingerprint" ></i> Ajouter une empreinte </a>
         <a class="my_button" target="myIframe" type="submit" value="match_user"><i class="fa-solid fa-fingerprint"></i> Tester une empreinte </a>
 	      <a onclick="document.getElementById('id05').style.display='block'" class="my_button" target="myIframe" type="submit" value="delete_account"><i class="fa-solid fa-trash"></i> Supprimer le compte</a>
       </div>
@@ -238,6 +239,15 @@ $stmt->close();
       <div id="id05" class="modal"> <!--Supprimer un user et son empreinte-->
     
     <form class="modal-content animate" method="post">
+
+    <script>
+        function add_fingerprint1() {
+            var xmlhttp = new XMLHttpRequest();
+            var url = "http://192.168.1.40/?function=add_fingerprint1";
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }
+    </script>
     
     <div class="container">
       <?php
