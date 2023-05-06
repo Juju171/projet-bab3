@@ -13,3 +13,10 @@ if (event.target == modal) {
     modal.style.display = "none";
 }
 }
+
+function sendData(fonction, ID) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://192.168.1.40", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.send("fonction=" + encodeURIComponent(fonction) + "&ID=" + encodeURIComponent(ID));
+}

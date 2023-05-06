@@ -54,9 +54,8 @@ $stmt->close();
       <body>
         <?php if($status=="boss") : ?> <!-- Case 1 : Si on est login en tant que patron-->
           <div class="flex-parent jc-center">
-            <a onclick="document.getElementById('id03').style.display='block'" class="my_button" type="submit"><i class="fa-solid fa-pen"></i> Modifier un utilisateur</a>
+            <a onclick="document.getElementById('id03').style.display='block'" class="my_button" type="submit"><i class="fa-solid fa-pen"></i> Modifier le rôle d'un utilisateur</a>
             <a onclick="document.getElementById('id04').style.display='block'" class="my_button" type="submit" value="delete_user"><i class="fa-solid fa-trash"></i> Supprimer un utilisateur</a>
-            <a class="my_button" type="submit" value="match_user"><i class="fa-solid fa-fingerprint"></i> Tester une empreinte</a>
           </div>
 
     <div id="id03" class="modal"> <!-- 1. Modifier le statut d'un user -->
@@ -156,16 +155,17 @@ $stmt->close();
           $result = mysqli_query($conn, $sql);
 
           if (mysqli_num_rows($result) > 0) {
-              echo "<form action='' method='POST'>";
-              echo "<label for='user' class='font1'><i class='fa-solid fa-user'></i><b> Nom : </b></label>";
-              echo "<select name='user_id'>";
-              while ($row = mysqli_fetch_assoc($result)) {
-                  echo "<option value='" . $row['ID'] . "'>" . $row['surname'] . "</option>";
-              }
-              echo "</select>";
-              echo "</form>";
+            echo "<form action='' method='POST'>";
+            echo "<label for='user' class='font1'><i class='fa-solid fa-user'></i><b> Nom : </b></label>";
+            echo "<select name='user_id'>";
+            while ($row = mysqli_fetch_assoc($result)) {
+              echo "<option value='" . $row['ID'] . "'>" . $row['surname'] . "</option>";
+              $del_id=$row['ID'];
+            }
+            echo "</select>";
+            echo "</form>";
           } else {
-              echo "Aucun utilisateur trouvé.";
+            echo "Aucun utilisateur trouvé.";
           }
 
 
@@ -173,12 +173,13 @@ $stmt->close();
           mysqli_close($conn);
         ?>
         <div class="flex-parent jc-center">
-          <button type="submit" name='delete' value='delete user' class="login_button">Supprimer un utilisateur</button>
+          <button onclick="sendData(3,<?php $del_id?>)" type="submit" name='delete' value='delete user' class="login_button">Supprimer un utilisateur</button>
         </div>
         <div class="container">
           <button type="button" onclick="document.getElementById('id04').style.display='none'" class="cancelbtn">Annuler</button>
         </div>
   </div>
+
   </form>
     </div>
           
@@ -222,7 +223,7 @@ $stmt->close();
           mysqli_close($conn);
         ?>
         <div class="flex-parent jc-center">
-          <button type="submit" name='delete' value='delete user' class="login_button">Supprimer un utilisateur</button>
+          <button onclick="sendData(3,<?php $user_id?>)" type="submit" name='delete' value='delete user' class="login_button">Supprimer un utilisateur</button>
         </div>
         <div class="container">
           <button type="button" onclick="document.getElementById('id05').style.display='none'" class="cancelbtn">Annuler</button>
@@ -231,8 +232,7 @@ $stmt->close();
 
     <?php elseif ( $status == "employee" ) : ?> <!-- Case 3 : Si on est login en tant qu'employé--><!--Il faut ajouter à l'ID qu'on souhaite sur le capteur -->
       <div class="flex-parent jc-center">
-	      <a class="my_button" onclick="add_fingerprint1()" target="myIframe" type="submit" value="add_user"><i class="fa-solid fa-fingerprint" ></i> Ajouter une empreinte </a>
-        <a class="my_button" target="myIframe" type="submit" value="match_user"><i class="fa-solid fa-fingerprint"></i> Tester une empreinte </a>
+	      <a class="my_button" onclick="sendData(1,<?php $_SESSION['ID']?>)" target="myIframe" type="submit" value="add_user"><i class="fa-solid fa-fingerprint" ></i> Ajouter une empreinte </a>
 	      <a onclick="document.getElementById('id05').style.display='block'" class="my_button" target="myIframe" type="submit" value="delete_account"><i class="fa-solid fa-trash"></i> Supprimer le compte</a>
       </div>
 
@@ -240,14 +240,6 @@ $stmt->close();
     
     <form class="modal-content animate" method="post">
 
-    <script>
-        function add_fingerprint1() {
-            var xmlhttp = new XMLHttpRequest();
-            var url = "http://192.168.1.40/?function=add_fingerprint1";
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
-        }
-    </script>
     
     <div class="container">
       <?php
