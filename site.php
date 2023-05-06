@@ -55,7 +55,7 @@ $stmt->close();
           <div class="flex-parent jc-center">
             <a onclick="document.getElementById('id03').style.display='block'" class="my_button" type="submit"><i class="fa-solid fa-pen"></i> Modifier un utilisateur</a>
             <a onclick="document.getElementById('id04').style.display='block'" class="my_button" type="submit" value="delete_user"><i class="fa-solid fa-trash"></i> Supprimer un utilisateur</a>
-            <a class="my_button" type="submit" value="match_user"><i class="fa-solid fa-fingerprint"></i> ghdfg test a fingerprint</a>
+            <a class="my_button" type="submit" value="match_user"><i class="fa-solid fa-fingerprint"></i> Tester une empreinte</a>
           </div>
 
     <div id="id03" class="modal"> <!-- 1. Modifier le statut d'un user -->
@@ -221,18 +221,18 @@ $stmt->close();
           mysqli_close($conn);
         ?>
         <div class="flex-parent jc-center">
-          <button type="submit" name='delete' value='delete user' class="login_button">Delete user</button>
+          <button type="submit" name='delete' value='delete user' class="login_button">Supprimer un utilisateur</button>
         </div>
         <div class="container">
-          <button type="button" onclick="document.getElementById('id05').style.display='none'" class="cancelbtn">Cancel</button>
+          <button type="button" onclick="document.getElementById('id05').style.display='none'" class="cancelbtn">Annuler</button>
         </div>
   </div>
 
     <?php elseif ( $status == "employee" ) : ?> <!-- Case 3 : Si on est login en tant qu'employé--><!--Il faut ajouter à l'ID qu'on souhaite sur le capteur -->
       <div class="flex-parent jc-center">
-	      <a class="my_button" target="myIframe" type="submit" value="add_user"><i class="fa-solid fa-fingerprint"></i> Add a fingerprint</a>
-        <a class="my_button" target="myIframe" type="submit" value="match_user"><i class="fa-solid fa-fingerprint"></i> Match test a fingerprint</a>
-	      <a onclick="document.getElementById('id05').style.display='block'" class="my_button" target="myIframe" type="submit" value="delete_account"><i class="fa-solid fa-trash"></i> Delete the account</a>
+	      <a class="my_button" target="myIframe" type="submit" value="add_user"><i class="fa-solid fa-fingerprint"></i> Ajouter une empreinte </a>
+        <a class="my_button" target="myIframe" type="submit" value="match_user"><i class="fa-solid fa-fingerprint"></i> Tester une empreinte </a>
+	      <a onclick="document.getElementById('id05').style.display='block'" class="my_button" target="myIframe" type="submit" value="delete_account"><i class="fa-solid fa-trash"></i> Supprimer le compte</a>
       </div>
 
       <div id="id05" class="modal"> <!--Supprimer un user et son empreinte-->
@@ -270,10 +270,10 @@ $stmt->close();
           mysqli_close($conn);
         ?>
         <div class="flex-parent jc-center">
-          <button type="submit" name='delete' value='delete user' class="login_button">Delete user</button>
+          <button type="submit" name='delete' value='delete user' class="login_button">Supprimer l'utilisateur</button>
         </div>
         <div class="container">
-          <button type="button" onclick="document.getElementById('id05').style.display='none'" class="cancelbtn">Cancel</button>
+          <button type="button" onclick="document.getElementById('id05').style.display='none'" class="cancelbtn">Annuler</button>
         </div>
   </div>
 
