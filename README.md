@@ -12,9 +12,13 @@ https://docs.arduino.cc/resources/datasheets/A000066-datasheet.pdf
 ## Usefull websites :
 ### Development ideas : 
 -https://circuits4you.com/2018/02/05/esp8266-arduino-wifi-web-server-led-on-off-control/
+
 -https://circuits4you.com/2018/02/05/esp8266-arduino-wifi-web-server-led-on-off-control/
+
 -https://www.embedded-robotics.com/esp8266-wifi/#programming-the-esp8266-access-point-mode-ap
+
 -https://www.instructables.com/How-to-Connect-NodeMCU-ESP8266-to-MySQL-Database-1/
+
 -https://mytectutor.com/how-to-connect-esp8266-to-mysql-database-using-php-and-arduino-ide/
 
 ### Github syntaxe : 
