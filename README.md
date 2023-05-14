@@ -1,11 +1,15 @@
 # Projet_bab3
+Ce projet se place dans notre cursus d'études d'ingénieur civil option électricité.
+celui-ci a pour but l'utilisation d'un lecteur d'empreinte digitale SEN0348 associé à un ESP8266 pour gérer l'accés à un bâtiment. Nous avons donc développé un programme en arduino dirigeant ce capteur et nous avons également utilisé une base de données MySQL pour laquelle nous avons développé un site en PHP qui sert d'interface graphique.
 
 ## Datasheets :
 ### SEN0348 fingerprint captor :
 https://www.gotronic.fr/art-capteur-d-empreinte-digitale-sen0348-32251.htm#complte_desc
-### Arduino UNO :
-https://docs.arduino.cc/resources/datasheets/A000066-datasheet.pdf
-
+### ESP8266 :
+https://components101.com/development-boards/nodemcu-esp8266-pinout-features-and-datasheet
+https://www.theengineeringprojects.com/2018/08/esp8266-pinout-datasheet-features-applications.html
+https://handsontec.com/dataspecs/module/esp8266-V13.pdf
+https://www.elprocus.com/esp8266-wi-fi-module/
 
 ## Usefull websites :
 ### Development ideas : 
@@ -15,6 +19,9 @@ https://docs.arduino.cc/resources/datasheets/A000066-datasheet.pdf
 
 -https://www.embedded-robotics.com/esp8266-wifi/#programming-the-esp8266-access-point-mode-ap
 
+-https://www.instructables.com/How-to-Connect-NodeMCU-ESP8266-to-MySQL-Database-1/
 
-## Github syntaxe : 
+-https://mytectutor.com/how-to-connect-esp8266-to-mysql-database-using-php-and-arduino-ide/
+
+### Github syntaxe : 
 https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
