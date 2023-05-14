@@ -22,7 +22,7 @@
       <form class="modal-content animate" action="login.php" method="post">
         <div class="imgcontainer">
           <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-          <img src="achille.png" alt="Avatar" class="avatar">
+          <img src="user icon.png" alt="Avatar" class="avatar">
         </div>
     
         <div class="container">
@@ -60,7 +60,7 @@
       <form class="modal-content animate" action="authenticate.php" method="post">
         <div class="imgcontainer">
           <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-          <img src="achille.png" alt="Avatar" class="avatar">
+          <img src="user icon.png" alt="Avatar" class="avatar">
         </div>
     
         <div class="container">
