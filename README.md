@@ -5,9 +5,11 @@ celui-ci a pour but l'utilisation d'un lecteur d'empreinte digitale SEN0348 asso
 ## Datasheets :
 ### SEN0348 fingerprint captor :
 https://www.gotronic.fr/art-capteur-d-empreinte-digitale-sen0348-32251.htm#complte_desc
-### Arduino UNO :
-https://docs.arduino.cc/resources/datasheets/A000066-datasheet.pdf
-
+### ESP8266 :
+https://components101.com/development-boards/nodemcu-esp8266-pinout-features-and-datasheet
+https://www.theengineeringprojects.com/2018/08/esp8266-pinout-datasheet-features-applications.html
+https://handsontec.com/dataspecs/module/esp8266-V13.pdf
+https://www.elprocus.com/esp8266-wi-fi-module/
 
 ## Usefull websites :
 ### Development ideas : 
