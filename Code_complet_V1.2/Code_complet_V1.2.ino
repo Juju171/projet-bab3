@@ -1,20 +1,35 @@
 #include <DFRobot_ID809.h>
 #include <ESP8266WiFi.h> 
 #include <ESP8266WebServer.h>
+#include <LiquidCrystal_I2C.h>
+#include <Servo.h>
 
-ESP8266WebServer server(80);  // Crée un serveur sur le port 80
+// Crée un serveur sur le port 80
+ESP8266WebServer server(80);  
 
-#define COLLECT_NUMBER 2  //Fingerprint sampling times, can be set to 2-3
+//Fingerprint sampling times, can be set to 2-3
+#define COLLECT_NUMBER 2  
 
-// Définir le SSID et le mot de passe de votre réseau Wi-Fi
-const char* wifi_ssid = "Wifi DD";
-const char* wifi_password = "Poupout68";
-
+// Définir le SSID et le mot du passe du wifi que le module wifi va générer en mode access point
 const char* ssid = "ESP8266";
-const char* password = "achlabete";
+const char* password = "achlabete"
 
+// Créez un objet de type Servo pour contrôler le servomoteur
+Servo myservo;  
+
+// Assignez la broche D3 au contrôle du bouton
+const int boutonPin = D3;
+
+// Variables pour stocker l'état précédent du bouton et l'état actuel
+int boutonState;
+int lastButtonState = LOW;
+
+// Initialisez les variables que nous allons utiliser plus tard
 int fonction = 9;
 uint8_t ID,i=0;
+
+// Initialisez l'objet LiquidCrystal_I2C avec l'adresse I2C et les dimensions de l'écran LCD
+LiquidCrystal_I2C lcd(0x3F, 16, 2); // Adresse I2C 0x3F, écran LCD 16x2
 
 /*Use software serial when using UNO or NANO */
 #if ((defined ARDUINO_AVR_NANO) || (defined ARDUINO_AVR_UNO))
@@ -41,9 +56,8 @@ void setup(){
   fingerprint.begin(FPSerial);
   /*Wait for Serial to open*/
   while(!Serial);
-  /*Test whether the device can communicate properly with mainboard 
-    Return true or false
-    */
+  /*Test whether the device can communicate properly with mainboard return true or false*/
+
   while(fingerprint.isConnected() == false){
     Serial.println("Communication with device failed, please check connection");
     /*Get error code information*/
@@ -52,7 +66,7 @@ void setup(){
     delay(1000);
   }
 
-// initialisation de la connexion WiFi
+// Initialisation de la connexion WiFi
 WiFi.softAP(ssid, password);
 Serial.println("Access Point créé !");
 Serial.print("Connect to ESP8266AP with password : ");
@@ -62,7 +76,30 @@ Serial.print("AP IP address: ");
 Serial.println(myIP);
 server.on("/", handleRoot);  
 
-server.begin();  // Démarre le serveur
+// Démarre le serveur
+server.begin();  
+
+// Initialisez la broche boutonPin comme une entrée
+pinMode(boutonPin, INPUT);
+
+// Activez les interruptions pour la broche D3
+attachInterrupt(digitalPinToInterrupt(boutonPin), detecterChangementBouton, CHANGE);
+
+// Initialisez l'écran LCD
+lcd.init();
+
+// Allumez l'écran LCD et activez le rétroéclairage
+lcd.backlight();
+lcd.clear();
+
+// Attachez le servomoteur à la broche 4
+myservo.attach(4);  
+
+// Définissez l'angle du servomoteur à 0 degrés
+myservo.write(0);
+// Atendre une seconde
+delay(1000); 
+
 }
 
 void handleRoot() {
@@ -78,6 +115,11 @@ void handleRoot() {
     }
     server.send(200, "text/plain", "OK");
   }
+}
+
+// Fonction pour détecter le changement d'état du bouton
+void detecterChangementBouton() {
+  // Ne faites rien dans cette fonction, car tout est géré dans la boucle loop()
 }
 
 
@@ -210,6 +252,22 @@ void match_finger(){ //2
       fingerprint.ctrlLED(/*LEDMode = */fingerprint.eKeepsOn, /*LEDColor = */fingerprint.eLEDGreen, /*blinkCount = */0);
       Serial.print("Matching succeeds,ID=");
       Serial.println(ret);
+
+      // Effacez l'écran LCD
+      lcd.clear();
+
+      // Affichez le message sur l'écran LCD
+      lcd.setCursor(0, 0);
+      lcd.print("Ouverture...")
+      lcd.setCursor(0,1);
+      lcd.print("ID : ");
+      lcd.print(ret);
+
+      myservo.write(90);  // Définissez l'angle du servomoteur à 90 degrés
+      delay(15000);        // Attendez 15s
+      myservo.write(0);   // Définissez l'angle du servomoteur à 0 degrés
+      delay(1000);        // Attendez une seconde
+
     }else{
       /*Set fingerprint LED ring to always ON in red*/
       fingerprint.ctrlLED(/*LEDMode = */fingerprint.eKeepsOn, /*LEDColor = */fingerprint.eLEDRed, /*blinkCount = */0);
@@ -304,41 +362,33 @@ void delete_all(){ //4
 }
 
 void loop(){
-  
-    fingerprint.ctrlLED(/*LEDMode = */fingerprint.eKeepsOn, /*LEDColor = */fingerprint.eLEDWhite,0);
-    /*int choix;
-    do{
-      menu(choix);
-      switch(choix){
-        case 1:
-        add_finger();
-        fingerprint.ctrlLED(fingerprint.eKeepsOn, fingerprint.eLEDWhite,0);
-        break;
-        case 2:
-        match_finger();
-        fingerprint.ctrlLED(fingerprint.eKeepsOn, fingerprint.eLEDWhite,0);
-        break;
-        case 3:
-        delete_finger();
-        fingerprint.ctrlLED(fingerprint.eKeepsOn, fingerprint.eLEDWhite,0);
-        break;
-        case 4:
-        delete_all();
-        fingerprint.ctrlLED(fingerprint.eKeepsOn, fingerprint.eLEDWhite,0);
-        break;
-      }
-    }while(choix!=5);
-    for(;;){
-      //Mode veille
-    }
-*/
 
+// Effacez l'écran LCD
+lcd.clear();
+
+// Lire l'état actuel du bouton
+boutonState = digitalRead(boutonPin);
+
+// Si l'état du bouton a changé
+if (boutonState != lastButtonState) {
+  // Enregistrer l'état actuel du bouton
+  lastButtonState = boutonState;
+
+  // Si le bouton est enfoncé
+  if (boutonState == HIGH) {
+    Serial.println("Bouton enfoncé");
+    fonction=2; //Si le bouton est enfoncé, on active la fonction match qui est la fonction 2
+  } else {
+    Serial.println("Bouton relâché");
+  }
+}
+  
 server.handleClient();
-  Serial.print("Fonction: ");
-  Serial.print(fonction);
-  Serial.print(", ID: ");
-  Serial.println(ID);
-  delay(100);
+Serial.print("Fonction: ");
+Serial.print(fonction);
+Serial.print(", ID: ");
+Serial.println(ID);
+delay(100);
 
 if(fonction !=9){
   switch(fonction){
