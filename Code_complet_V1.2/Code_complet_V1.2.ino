@@ -29,7 +29,7 @@ int fonction = 9;
 uint8_t ID,i=0;
 
 // Initialisez l'objet LiquidCrystal_I2C avec l'adresse I2C et les dimensions de l'écran LCD
-LiquidCrystal_I2C lcd(0x3F, 16, 2); // Adresse I2C 0x3F, écran LCD 16x2
+LiquidCrystal_I2C lcd(0x27, 16, 2); // Adresse I2C 0x3F, écran LCD 16x2
 
 /*Use software serial when using UNO or NANO */
 #if ((defined ARDUINO_AVR_NANO) || (defined ARDUINO_AVR_UNO))
@@ -261,7 +261,10 @@ void match_finger(){ //2
       lcd.print("Ouverture...")
       lcd.setCursor(0,1);
       lcd.print("ID : ");
+      lcd.setCursor(6,1);
       lcd.print(ret);
+      delay(2500); // Attendre 2.5s
+      lcd.clear();
 
       myservo.write(90);  // Définissez l'angle du servomoteur à 90 degrés
       delay(15000);        // Attendez 15s
