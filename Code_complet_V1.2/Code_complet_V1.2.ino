@@ -12,7 +12,7 @@ ESP8266WebServer server(80);
 
 // Définir le SSID et le mot du passe du wifi que le module wifi va générer en mode access point
 const char* ssid = "ESP8266";
-const char* password = "achlabete"
+const char* password = "123456";
 
 // Créez un objet de type Servo pour contrôler le servomoteur
 Servo myservo;  
@@ -91,6 +91,9 @@ lcd.init();
 // Allumez l'écran LCD et activez le rétroéclairage
 lcd.backlight();
 lcd.clear();
+
+lcd.setCursor(0,0);
+lcd.print("Test");
 
 // Attachez le servomoteur à la broche 4
 myservo.attach(4);  
@@ -258,11 +261,11 @@ void match_finger(){ //2
 
       // Affichez le message sur l'écran LCD
       lcd.setCursor(0, 0);
-      lcd.print("Ouverture...")
+      lcd.print("Ouverture...");
       lcd.setCursor(0,1);
       lcd.print("ID : ");
       lcd.setCursor(6,1);
-      lcd.print(ret);
+      lcd.print("12"); //A CHANGER 
       delay(2500); // Attendre 2.5s
       lcd.clear();
 
