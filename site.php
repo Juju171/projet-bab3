@@ -1,5 +1,5 @@
 <?php
-$ip = "192.168.1.40";
+$ip = "192.168.4.1";
 require_once("config.php");
 // We don't have the password or surname info stored in sessions, so instead, we can get the results from the database.
 $stmt = $link->prepare('SELECT status FROM tableau WHERE ID = ?');
@@ -27,7 +27,7 @@ $user = $stmt->fetch();
 $stmt->close();
 ?>
 
-<script src="scripts.js"></script>
+//<script src="scripts.js"></script>
 
 <!DOCTYPE html>
 <html>
@@ -213,7 +213,7 @@ $stmt->close();
 
             $sql = "DELETE FROM tableau WHERE ID='$user_id'";
             if (mysqli_query($conn, $sql)) {
-              header('Location: http://localhost/projet-bab3-website/logout.php'); //ça fonctionne pas (redirection vers la page de connexion)
+              header('Location: http://localhost/projet-bab3/logout.php'); //ça fonctionne pas (redirection vers la page de connexion)
             } else {
               echo "Erreur : " . mysqli_error($conn);
             }
@@ -232,8 +232,38 @@ $stmt->close();
 
     <?php elseif ( $status == "employee" ) : ?> <!-- Case 3 : Si on est login en tant qu'employé--><!--Il faut ajouter à l'ID qu'on souhaite sur le capteur -->
       <div class="flex-parent jc-center">
-	      <a class="my_button" onclick="sendData(1,<?php $_SESSION['ID']?>)" target="myIframe" type="submit" value="add_user"><i class="fa-solid fa-fingerprint" ></i> Ajouter une empreinte </a>
-	      <a onclick="document.getElementById('id05').style.display='block'" class="my_button" target="myIframe" type="submit" value="delete_account"><i class="fa-solid fa-trash"></i> Supprimer le compte</a>
+	      <a class="my_button" onclick="sendData()" target="myIframe" type="submit" value="add_user"><i class="fa-solid fa-fingerprint" ></i> Ajouter une empreinte</a>
+	      <a id="deletebutton" onclick="document.getElementById('id05').style.display='block'" class="my_button" target="myIframe" type="submit" value="delete_account"><i class="fa-solid fa-trash"></i> Supprimer le compte</a>
+<script>
+function changeText(button, text, textToChangeBackTo) {
+  buttonId = document.getElementById(button);
+  buttonId.textContent = text;
+  setTimeout(function() { document.getElementById(button).textContent = textToChangeBackTo; }, 5000);
+}
+
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+if (event.target == modal) {
+    modal.style.display = "none";
+}
+}
+function sendRequest() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://192.168.4.1/supprime-empreinte", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.send("action=delete_finger");
+}
+document.getElementById("deletebutton").addEventListener("click", sendRequest);
+function sendData() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://192.168.4.1/ajouter-empreinte", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.send("action=add_finger");
+}
+</script>
       </div>
 
       <div id="id05" class="modal"> <!--Supprimer un user et son empreinte-->
@@ -262,7 +292,7 @@ $stmt->close();
 
             $sql = "DELETE FROM tableau WHERE ID='$user_id'";
             if (mysqli_query($conn, $sql)) {
-              header('Location: http://localhost/projet-bab3-website/logout.php'); //ça fonctionne pas (redirection vers la page de connexion)
+              header('Location: http://localhost/projet-bab3/logout.php'); //ça fonctionne pas (redirection vers la page de connexion)
             } else {
               echo "Erreur : " . mysqli_error($conn);
             }

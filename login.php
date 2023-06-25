@@ -91,8 +91,9 @@
 
 
 <?php
+ini_set('display_errors', 0);
 if($_POST['surname'] and $_POST['firstname'] and $_POST['status'] and $_POST['psw']) {
-		
+	
 	$surname=$_POST['surname'];
   $firstname=$_POST['firstname'];
 	$status=$_POST['status'];
@@ -100,7 +101,7 @@ if($_POST['surname'] and $_POST['firstname'] and $_POST['status'] and $_POST['ps
 
 	$base = new PDO ('mysql:host=localhost;dbname=projetbab3', 'root', '');
 
-	$sql = "INSERT INTO `tableau` (`ID`, `surname`, `firstname`, `status`, `psw`) VALUES (NULL, '$surname', '$firstname', '$status', '$psw')";
+	$sql = "INSERT INTO `tableau` ( `surname`, `firstname`, `status`, `psw`) VALUES ( '$surname', '$firstname', '$status', '$psw')";
 	$Resultat = $base->exec($sql);
 
 }
